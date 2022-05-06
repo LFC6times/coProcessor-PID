@@ -6,15 +6,16 @@ package frc.robot.robot;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import frc.robot.Main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class NetworkTablesReader extends Thread { // make multithreaded so other stuff can be done without holdup
+public class NetworkTablesReader { // make multithreaded so other stuff can be done without holdup
 	private static NetworkTablesReader ntr = null;
 	private final long waitTimeMS = 10;
 	private final NetworkTableInstance networkTableInstance;
-	private HashMap<String, NetworkTableEntry> hashedEntries;
+	private final HashMap<String, NetworkTableEntry> hashedEntries;
 
 	/**
 	 * @return the singleton instance of NetworkTablesReader
@@ -35,7 +36,9 @@ public class NetworkTablesReader extends Thread { // make multithreaded so other
 		networkTableInstance.startClientTeam(3952);
 		networkTableInstance.startDSClient();
 
-		// this.init();
+		hashedEntries = new HashMap<>();
+
+		this.init(Main.entries);
 	}
 
 	/**
@@ -43,26 +46,11 @@ public class NetworkTablesReader extends Thread { // make multithreaded so other
 	 *
 	 * @param entries a HashMap of Strings to an ArrayList of Strings, tables to entries in each table
 	 */
-	private void init(HashMap<String, ArrayList<String>> entries) {
+	private void init(HashMap<String, String> entries) {
 		for (String i : entries.keySet()) {
-			for (String j : entries.get(i)) {
-				hashedEntries.put(i, networkTableInstance.getTable(i).getEntry(j));
-			}
-		}
-	}
-
-	/**
-	 * Basically a periodic() for this class, idk if this'll even be used
-	 */
-	@Override
-	public void run() {
-		while (true) { // "'while' statement cannot complete without throwing an exception" - IntelliJ, 2022
-			try {
-				Thread.sleep(waitTimeMS); // "probably busy-waiting" - IntelliJ, 2022
-				// System.out.println(instance.getTable("test").getEntry("sus").getString("not a string"));
-			} catch (InterruptedException iException) {
-				System.out.println("baka interrupted me");
-			}
+			String[] tableAndEntry = entries.get(i).split("/");
+			hashedEntries.put(i, networkTableInstance.getTable(tableAndEntry[0]).getEntry(tableAndEntry[1]));
+			System.out.println("added " + i);
 		}
 	}
 
@@ -96,6 +84,7 @@ public class NetworkTablesReader extends Thread { // make multithreaded so other
 	 * @param value double value to set entry to
 	 */
 	public void setDoubleEntry(String entry, double value) {
+		// System.out.println("try to get " + entry);
 		this.hashedEntries.get(entry).setDouble(value);
 		this.networkTableInstance.flush();
 	}

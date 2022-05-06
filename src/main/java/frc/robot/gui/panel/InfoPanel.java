@@ -1,4 +1,4 @@
-package frc.robot.gui;
+package frc.robot.gui.panel;
 
 import javax.swing.*;
 import java.awt.*;

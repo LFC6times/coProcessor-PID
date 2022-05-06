@@ -1,16 +1,19 @@
 package frc.robot.util;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class ParseFile {
 	private Scanner input;
 
+	private String lines;
+	private HashMap<String, String> entries;
 	public ParseFile(String fileName) {
 		try {
 			input = new Scanner(new File(fileName));
+			this.lines = getLines();
+			this.entries = getEntries(lines);
 		} catch (Exception e) {
 			System.out.println("no such file");
 		}
@@ -20,7 +23,7 @@ public class ParseFile {
 		return input != null;
 	}
 
-	public String getLines() {
+	private String getLines() {
 		StringBuilder sb = new StringBuilder();
 		while (input.hasNextLine()) {
 			sb.append(input.nextLine());
@@ -38,7 +41,7 @@ public class ParseFile {
 		return sb.toString();
 	}
 
-	public HashMap<String, String> getEntries(String lines) {
+	private HashMap<String, String> getEntries(String lines) {
 		HashMap<String, String> entries = new HashMap<>();
 
 		String[] linesArray = lines.split(":"); // I've been duly informed by stackoverflow that no regex will be created since it's single char
@@ -49,7 +52,7 @@ public class ParseFile {
 		return entries;
 	}
 
-	public HashMap<String, String> getEntries() {
+	private HashMap<String, String> getEntries() {
 		HashMap<String, String> entries = new HashMap<>();
 		String lines = getLines();
 
@@ -59,5 +62,9 @@ public class ParseFile {
 		}
 
 		return entries;
+	}
+
+	public HashMap<String, String> getEntryMap() {
+		return this.entries;
 	}
 }

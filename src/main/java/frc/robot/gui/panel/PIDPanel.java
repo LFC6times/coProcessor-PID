@@ -1,9 +1,10 @@
-package frc.robot.gui;
+package frc.robot.gui.panel;
+
+import frc.robot.robot.NetworkTablesReader;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
 import java.util.*;
 
 public class PIDPanel extends JPanel {
@@ -60,13 +61,13 @@ public class PIDPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			adjust.save();
 			SavePanel.updateSaveCount();
-			System.out.println("updated");
+
+
 		}
 	}
 
 	private class Listener2 implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("reverting");
 			adjust.input();
 		}
 	}

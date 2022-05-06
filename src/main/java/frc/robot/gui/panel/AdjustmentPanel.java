@@ -1,4 +1,8 @@
-package frc.robot.gui;
+package frc.robot.gui.panel;
+
+import frc.robot.Main;
+import frc.robot.gui.SystemOutHandler;
+import frc.robot.robot.NetworkTablesReader;
 
 import java.awt.*;
 import javax.swing.*;
@@ -7,7 +11,6 @@ import java.io.*;
 
 public class AdjustmentPanel extends JPanel {
 	private final int num;
-	private int size = 0;
 	private JLabel[] labels;
 	private JTextField[] fields;
 
@@ -34,16 +37,19 @@ public class AdjustmentPanel extends JPanel {
 	}
 
 	public void save() {
-		try {
-			System.setOut(new PrintStream(new FileOutputStream("PISS\\save" + (SavePanel.getSaveCount() + 1) + ".txt")));
-		} catch (Exception e) {
-			System.out.println(e);
-			return;
+		String outPath = "PISS\\save" + (SavePanel.getSaveCount() + 1) + ".txt";
+		SystemOutHandler.setOutStream(outPath);
+		System.out.println(num);
+		NetworkTablesReader ntr = NetworkTablesReader.getInstance();
+		HashMap<String, String> entries = Main.entries;
+
+		for (int i = 0; i < num; ++i) {
+			double val = Double.parseDouble(fields[i].getText());
+			System.out.println(val);
+			// System.out.println("try to get " + labels[i].getText());
+			ntr.setDoubleEntry(labels[i].getText(), val);
 		}
-		System.out.println(size);
-		for (int i = 0; i < size; ++i) {
-			System.out.println(Double.parseDouble(fields[i].getText()));
-		}
+		SystemOutHandler.resetOutStream();
 	}
 
 	public void input() {
@@ -54,11 +60,13 @@ public class AdjustmentPanel extends JPanel {
 			System.out.println("no such file");
 			return;
 		}
-		size = input.nextInt();
-		System.out.println(size);
-		for (int i = 0; i < size; ++i) {
+		// num = input.nextInt();
+		input.nextDouble();
+		System.out.println(num);
+		for (int i = 0; i < num; ++i) {
 			fields[i].setText("" + input.nextDouble());
 		}
 		input.close();
+
 	}
 }

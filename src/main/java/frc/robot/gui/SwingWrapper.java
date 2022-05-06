@@ -1,5 +1,7 @@
 package frc.robot.gui;
 
+import frc.robot.gui.panel.Panel;
+
 import javax.swing.JFrame;
 import java.util.HashMap;
 

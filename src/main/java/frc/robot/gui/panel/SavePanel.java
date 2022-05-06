@@ -1,4 +1,6 @@
-package frc.robot.gui;
+package frc.robot.gui.panel;
+
+import frc.robot.gui.SystemOutHandler;
 
 import java.awt.*;
 import javax.swing.*;
@@ -29,10 +31,12 @@ public class SavePanel extends JPanel {
 			System.out.println("no such file, making one");
 			try {
 				new File("PISS").mkdir();
-				System.setOut(new PrintStream(new FileOutputStream("PISS\\saveInfo.txt")));
+				SystemOutHandler.setOutStream("PISS\\saveInfo.txt");
 				System.out.println("0");
+				SystemOutHandler.resetOutStream();
 				return 0;
 			} catch (Exception ex) {
+				SystemOutHandler.resetOutStream();
 				throw new RuntimeException(ex);
 			}
 		} catch (Exception e) {
@@ -46,13 +50,14 @@ public class SavePanel extends JPanel {
 	public static void updateSaveCount() {
 		int count = getSaveCount();
 		try {
-			System.setOut(new PrintStream(new FileOutputStream("PISS\\saveInfo.txt")));
+			SystemOutHandler.setOutStream("PISS\\saveInfo.txt");
 		} catch (Exception e) {
-			return;
+			SystemOutHandler.resetOutStream();
+			throw new RuntimeException(e);
 		}
 		updateText(count + 1);
 		System.out.println(count + 1);
-
+		SystemOutHandler.resetOutStream();
 	}
 
 	public static void updateText(int number) {
