@@ -61,8 +61,6 @@ public class PIDPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			adjust.save();
 			SavePanel.updateSaveCount();
-
-
 		}
 	}
 

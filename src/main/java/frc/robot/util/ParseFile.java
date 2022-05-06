@@ -9,6 +9,7 @@ public class ParseFile {
 
 	private String lines;
 	private HashMap<String, String> entries;
+
 	public ParseFile(String fileName) {
 		try {
 			input = new Scanner(new File(fileName));

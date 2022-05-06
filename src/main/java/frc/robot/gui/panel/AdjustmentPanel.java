@@ -41,7 +41,6 @@ public class AdjustmentPanel extends JPanel {
 		SystemOutHandler.setOutStream(outPath);
 		System.out.println(num);
 		NetworkTablesReader ntr = NetworkTablesReader.getInstance();
-		HashMap<String, String> entries = Main.entries;
 
 		for (int i = 0; i < num; ++i) {
 			double val = Double.parseDouble(fields[i].getText());

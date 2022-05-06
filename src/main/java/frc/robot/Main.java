@@ -18,7 +18,7 @@ public class Main {
 		ParseFile parseFile = new ParseFile("entries.txt");
 		entries = parseFile.getEntryMap();
 
-		while(entries == null) {
+		while (entries == null) {
 			try {
 				Thread.sleep(500);
 				System.out.println("Waiting for entries...");
@@ -26,7 +26,7 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(entries == null);
+
 		NetworkTablesReader.getInstance(); // start network tables
 		swingInit();
 	}
