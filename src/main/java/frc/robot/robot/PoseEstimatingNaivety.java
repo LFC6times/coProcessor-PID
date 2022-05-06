@@ -14,7 +14,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @return the displacement in the x direction
 	 */
 	public double getDisplacementX() {
@@ -22,7 +21,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @return the displacement in the z direction
 	 */
 	public double getDisplacementZ() {
@@ -30,7 +28,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @return the velocity in the x direction
 	 */
 	public double getVelocityX() {
@@ -38,7 +35,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @return the velocity in the z direction
 	 */
 	public double getVelocityZ() {
@@ -61,7 +57,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @param accel the acceleration in the x direction
 	 * @param deltaTime the time since the last update
 	 * @return the new velocity in the x direction
@@ -71,7 +66,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @param accel the acceleration in the z direction
 	 * @param deltaTime the time since the last update
 	 * @return the new velocity in the z direction
@@ -81,7 +75,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @param velocityX the current velocity in the X direction
 	 * @param deltaTime the time since the last update
 	 * @return the new displacement in the X direction
@@ -91,7 +84,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @param velocityZ the current velocity in the Z direction
 	 * @param deltaTime the time since the last update
 	 * @return the new displacement in the Z direction
@@ -101,7 +93,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @param velocityX the new velocity in the x direction
 	 */
 	public void setVelocityX(double velocityX) {
@@ -109,7 +100,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @param velocityZ the new velocity in the z direction
 	 */
 	public void setVelocityZ(double velocityZ) {
@@ -117,7 +107,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @param displacement the displacement in the x direction
 	 */
 	public void setDisplacementX(double displacement) {
@@ -125,7 +114,6 @@ public class PoseEstimatingNaivety {
 	}
 
 	/**
-	 *
 	 * @param displacement the displacement in the z direction
 	 */
 	public void setDisplacementZ(double displacement) {

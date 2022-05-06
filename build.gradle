@@ -79,7 +79,6 @@ dependencies {
     // simulationRelease wpi.sim.enableRelease()
 
     testImplementation 'junit:junit:4.13.1'
-
 }
 
 sourceCompatibility = JavaVersion.VERSION_11

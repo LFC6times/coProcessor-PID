@@ -162,3 +162,6 @@ bin/
 *-window.json
 
 yoink/
+
+# hopefully won't end well, but the GUI saving uses .txt so it's ignored
+*.txt
