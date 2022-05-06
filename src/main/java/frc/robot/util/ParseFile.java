@@ -20,28 +20,43 @@ public class ParseFile {
 		}
 	}
 
+	/**
+	 * Whether getting Scanner was successful
+	 * @return true if successful, false otherwise
+	 */
 	public boolean successful() {
 		return input != null;
 	}
 
+	/**
+	 * Get the lines of the file
+	 *
+	 * Format of file:
+	 *
+	 * name:table/entry
+	 * name2:table2/entry2
+	 *
+	 * and so on. This will therefore remove the line breaks and replace with a colon, and {@link #getEntries(String)}
+	 * will return a HashMap with the names mapped to entries.
+	 *
+	 * @return the lines of the file, as a single string without line breaks. Every item is separated by a colon.
+	 */
 	private String getLines() {
 		StringBuilder sb = new StringBuilder();
 		while (input.hasNextLine()) {
 			sb.append(input.nextLine());
-			/*
-			 * Format of the file will be as follows:
-			 *
-			 * name:table/entry
-			 * name2:table2/entry2
-			 *
-			 * and so on. So we use nextLine() to remove the line breaks and then combine with a colon for quicker parse
-			 */
 			sb.append(":");
 		}
 		this.input.close();
 		return sb.toString();
 	}
 
+	/**
+	 * Get the entries from the formatted string
+	 *
+	 * @param lines the formatted string from {@link #getLines()}, or another source if you so wish
+	 * @return a HashMap with the names mapped to entries
+	 */
 	private HashMap<String, String> getEntries(String lines) {
 		HashMap<String, String> entries = new HashMap<>();
 
@@ -53,6 +68,10 @@ public class ParseFile {
 		return entries;
 	}
 
+	/**
+	 * The same as {@link #getEntries(String)}, but calls {@link #getLines()} automatically
+	 * @return a HashMap with the names mapped to entries
+	 */
 	private HashMap<String, String> getEntries() {
 		HashMap<String, String> entries = new HashMap<>();
 		String lines = getLines();
@@ -65,6 +84,11 @@ public class ParseFile {
 		return entries;
 	}
 
+	/**
+	 * Get the entry HashMap
+	 *
+	 * @return the entry HashMap
+	 */
 	public HashMap<String, String> getEntryMap() {
 		return this.entries;
 	}

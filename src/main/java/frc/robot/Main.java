@@ -1,7 +1,3 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot;
 
 import frc.robot.gui.SwingWrapper;
@@ -32,6 +28,6 @@ public class Main {
 	}
 
 	public static void swingInit() {
-		swingWrapper = new SwingWrapper("sus", new int[]{1000, 1000}, entries);
+		swingWrapper = new SwingWrapper("co-Processor PID", new int[]{1000, 1000}, entries);
 	}
 }

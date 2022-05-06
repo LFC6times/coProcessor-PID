@@ -8,10 +8,9 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.Main;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class NetworkTablesReader { // make multithreaded so other stuff can be done without holdup
+public class NetworkTablesReader {
 	private static NetworkTablesReader ntr = null;
 	private final long waitTimeMS = 10;
 	private final NetworkTableInstance networkTableInstance;
@@ -84,7 +83,6 @@ public class NetworkTablesReader { // make multithreaded so other stuff can be d
 	 * @param value double value to set entry to
 	 */
 	public void setDoubleEntry(String entry, double value) {
-		// System.out.println("try to get " + entry);
 		this.hashedEntries.get(entry).setDouble(value);
 		this.networkTableInstance.flush();
 	}

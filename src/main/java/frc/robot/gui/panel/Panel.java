@@ -1,8 +1,9 @@
 package frc.robot.gui.panel;
 
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.util.HashMap;
-import javax.swing.*;
 
 public class Panel extends JPanel {
 	private InfoPanel rightPanel;

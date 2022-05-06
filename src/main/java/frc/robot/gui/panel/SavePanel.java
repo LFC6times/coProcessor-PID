@@ -2,10 +2,15 @@ package frc.robot.gui.panel;
 
 import frc.robot.gui.SystemOutHandler;
 
-import java.awt.*;
-import javax.swing.*;
-import java.util.*;
-import java.io.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class SavePanel extends JPanel {
 	private static JTextField field;
