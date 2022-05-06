@@ -60,11 +60,13 @@ public class PIDPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			adjust.save();
 			SavePanel.updateSaveCount();
+			System.out.println("updated");
 		}
 	}
 
 	private class Listener2 implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			System.out.println("reverting");
 			adjust.input();
 		}
 	}

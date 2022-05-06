@@ -37,6 +37,7 @@ public class AdjustmentPanel extends JPanel {
 		try {
 			System.setOut(new PrintStream(new FileOutputStream("PISS\\save" + (SavePanel.getSaveCount() + 1) + ".txt")));
 		} catch (Exception e) {
+			System.out.println(e);
 			return;
 		}
 		System.out.println(size);
@@ -54,6 +55,7 @@ public class AdjustmentPanel extends JPanel {
 			return;
 		}
 		size = input.nextInt();
+		System.out.println(size);
 		for (int i = 0; i < size; ++i) {
 			fields[i].setText("" + input.nextDouble());
 		}
